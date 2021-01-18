@@ -92,3 +92,15 @@ def build_web_page(data)
     '
      end
 
+     def photos_count(data)
+        counts = Hash.new(0)
+        data['photos'].each do |photo|
+            name = photo["camera"]["name"]
+            if counts[name] 
+                counts[name] += 1
+            else 
+                counts[name] = 1
+            end
+        end
+        return counts
+    end
